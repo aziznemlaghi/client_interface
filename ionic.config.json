@@ -1,0 +1,7 @@
+{
+  "name": "client_front_2",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
