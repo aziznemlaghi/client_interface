@@ -8,16 +8,16 @@ import { ApiService } from './service1.service';
 })
 export class Tab1Page {
 
-  dataServices: any = [] ;
+  dataServices: any  ;
 
   constructor(public api: ApiService) {
-    this.getDataService();
   }
 
   ngOnInit() {
+    this.getDataService();
   }
-  
-  async getDataService() {
+
+  getDataService() {
      this.api.getDataService()
       .subscribe(res => {
         console.log(res);
@@ -28,6 +28,6 @@ export class Tab1Page {
       });
   }
 
-  
+
 
 }
