@@ -8,20 +8,21 @@ import { ApiService } from './service1.service';
 })
 export class Tab1Page {
 
-  dataServices: any  ;
+  dataServices: any[] = [];
 
   constructor(public api: ApiService) {
+    this.getDataService();
+
   }
 
   ngOnInit() {
-    this.getDataService();
   }
 
   getDataService() {
      this.api.getDataService()
       .subscribe(res => {
         console.log(res);
-        this.dataServices = res.results;
+        this.dataServices = res;
 		console.log(this.dataServices);
       }, err => {
         console.log(err);
