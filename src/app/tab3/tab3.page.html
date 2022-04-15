@@ -13,21 +13,42 @@
     </ion-toolbar>
   </ion-header>
 <ion-content>
-  <ion-card color="light">
-    <div class="img-wrapper">
-      <img src="assets\img\IMG-20200706-WA0005.jpg/" />
-      <ion-button color="light">
-        
-      </ion-button>
+
+  <ion-grid class="main-header">
+    <div align="center">
+      <ion-avatar>
+        <img src="assets\img\icon2.jpg" />
+       
+        <ion-text class="profile-text">Welcome back {{user.user.name}} !</ion-text>
+      </ion-avatar>
     </div>
-    <ion-card-content class="ion-text-center">
-      <h2>Username</h2>
-      <ion-text color="medium">
-        <div style="display: flex;" class="ion-justify-content-center">
-        </div>
-      </ion-text>
-    </ion-card-content>
-  </ion-card>
+  </ion-grid>
+
+
+  <form>
+  
+    <ion-item>
+      <ion-label>
+        <ion-text>Name</ion-text>
+        <p><ion-input  type="text" name="username"  value="{{user.user.name}}"></ion-input></p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <ion-text>Phone</ion-text>
+        <p><ion-input  type="text" name="phone"  value="{{user.user.phone}}"></ion-input></p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <ion-text>Email</ion-text>
+        <p><ion-input  type="text"  value="{{user.user.email}}v"></ion-input></p>
+      </ion-label>
+    </ion-item>
+    
+    <ion-button  type="submit" class="updateButton" expand="full" color="secondary" block>Update profile</ion-button>
+
+</form>
   
 <div >
   <ion-button (click)="onSignOut()" class="logout" expand="full" color="danger">Log out</ion-button>

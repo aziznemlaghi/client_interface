@@ -13,9 +13,23 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-card *ngFor="let data of dataServices"  color="light">
-    <div class="img-wrapper">
-      <img src="assets\img\IMG-20200706-WA0005.jpg/" />
+  <ion-card  *ngFor="let data of dataServices">
+    <img src="\assets\img\Blue.png"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{data.name}}<span class="price">{{data.price}}dt</span>
+        </ion-card-title>
+      <p>
+        {{data.description}}
+      </p>
+      <br>
+      <ion-button expand="block" color="primary" >Reserve</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+<!-- <ion-card *ngFor="let data of dataServices"  color="light">
+   <div class="img-wrapper">
+      <ion-img src="\assets\img\Blue.png"></ion-img>
     </div>
     <ion-card-content class="ion-text-center">
       <h2>{{data.name}}<br> {{data.price}}</h2>
@@ -24,7 +38,7 @@
         </div>
       </ion-text>
     </ion-card-content>
-  </ion-card>
+  </ion-card>-->
 
 
 
