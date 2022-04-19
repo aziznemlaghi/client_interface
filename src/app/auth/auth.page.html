@@ -1,0 +1,98 @@
+<ion-content>
+  <div class="title-container">
+    <ion-img src="assets\img\output-onlinepngtools.png"></ion-img>
+  </div>
+  <div class="subtitle-container">we make it easier for you</div>
+
+  <form #form="ngForm" (ngSubmit)="onSubmit()">
+    <ion-card>
+      <ng-container *ngIf="submissionType === 'join'">
+        <ion-item>
+          <ion-label position="floating">username</ion-label>
+          <ion-input
+            #nameInput="ngModel"
+            ngModel
+            type="text"
+            class="formControl"
+            name="name"
+            minlength="4"
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-text
+          color="danger"
+          *ngIf="!nameInput.valid && nameInput.touched"
+          >Please enter your name.</ion-text
+        >
+      </ng-container>
+      <ng-container *ngIf="submissionType === 'join'">
+        <ion-item>
+          <ion-label position="floating">phone</ion-label>
+          <ion-input
+            #phoneInput="ngModel"
+            ngModel
+            type="number"
+            minlength="8"
+            name="phone"
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-text
+          color="danger"
+          *ngIf="!phoneInput.valid && phoneInput.touched"
+          >Please enter your phone number.</ion-text
+        >
+      </ng-container>
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input
+          #emailInput="ngModel"
+          ngModel
+          type="email"
+          name="email"
+          required
+          [email]="true"
+        ></ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="!emailInput.valid && emailInput.touched"
+        >Please enter your email address.</ion-text
+      >
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input
+          #passwordInput="ngModel"
+          ngModel
+          type="password"
+          name="password"
+          minlength="8"
+          required
+        ></ion-input>
+      </ion-item>
+      <ion-text
+        color="danger"
+        *ngIf="!passwordInput.valid && passwordInput.touched"
+        >Please enter your password.</ion-text
+      >
+      <p *ngIf="submissionType === 'join'" class="terms-and-conditions">
+        By clicking Agree & Join, you agree to the Deals
+        <ion-text color="primary">User Agreement</ion-text>,
+        <ion-text color="primary">Privacy Policy</ion-text>, and
+        <ion-text color="primary">Cookie Policy</ion-text>.
+      </p>
+      <ion-button
+        [disabled]="!form.valid"
+        type="submit"
+        shape="round"
+        expand="block"
+      >
+        {{ submissionType === 'login' ? 'Sign in' : 'Accept & Join' }}
+      </ion-button>
+    </ion-card>
+  </form>
+  <div class="toggle-text">
+    {{ submissionType === 'login' ? 'New to Deals ? ' : 'Already on Deals ? ' }}
+    <ion-text class="toggle-auth-mode" (click)="toggleText()" color="primary">
+      {{ submissionType === 'login' ? 'Join now' : 'Sign in' }}
+    </ion-text>
+  </div>
+</ion-content>

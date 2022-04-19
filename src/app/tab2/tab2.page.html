@@ -6,7 +6,19 @@ Reservations    </ion-title>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
+  <ion-card >
+    
+    <ion-card-content>
+      <ion-card-title *ngFor="let data of dataReservations">
+        {{data.id}}
+        </ion-card-title>
+      <p>
+        
+      </p>
+      <br>
+      <ion-button expand="block" color="primary" >Reserve</ion-button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
 
 

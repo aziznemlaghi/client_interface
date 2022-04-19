@@ -20,33 +20,57 @@
         <img src="assets\img\icon2.jpg" />
        
         <ion-text class="profile-text">Welcome back {{user.user.name}} !</ion-text>
+       
       </ion-avatar>
     </div>
   </ion-grid>
+  <!--<ion-text>phone :{{user.user.phone}} </ion-text><br>
+  <ion-text >email :{{user.user.email}} </ion-text>-->
 
-
-  <form>
+  <form #form="ngForm" (ngSubmit)="onSubmit()">
   
     <ion-item>
       <ion-label>
         <ion-text>Name</ion-text>
-        <p><ion-input  type="text" name="username"  value="{{user.user.name}}"></ion-input></p>
+        <p><ion-input #nameInput="ngModel"
+          ngModel
+          type="text"
+          placeholder={{this.user.user.name}}
+          class="formControl"
+          name="name"
+          minlength="4"
+          ></ion-input></p>
       </ion-label>
     </ion-item>
     <ion-item>
       <ion-label>
         <ion-text>Phone</ion-text>
-        <p><ion-input  type="text" name="phone"  value="{{user.user.phone}}"></ion-input></p>
+        <p><ion-input  #phoneInput="ngModel"
+          ngModel
+          type="number"
+          placeholder={{this.user.user.phone}}
+          minlength="8"
+          name="phone"
+          ></ion-input></p>
       </ion-label>
     </ion-item>
     <ion-item>
       <ion-label>
         <ion-text>Email</ion-text>
-        <p><ion-input  type="text"  value="{{user.user.email}}v"></ion-input></p>
+        <p>
+          <ion-input  #emailInput="ngModel"
+          ngModel
+          type="email"
+          placeholder={{this.user.user.email}}
+          name="email"
+          [email]="true">
+        </ion-input>
+      </p>
       </ion-label>
     </ion-item>
     
-    <ion-button  type="submit" class="updateButton" expand="full" color="secondary" block>Update profile</ion-button>
+    <ion-button [disabled]="!form.valid"
+    type="submit"   class="updateButton" expand="full" color="secondary" block>Update profile</ion-button>
 
 </form>
   
