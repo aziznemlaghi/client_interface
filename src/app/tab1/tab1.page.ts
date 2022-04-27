@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { AlertController, IonDatetime, ModalController, PopoverController } from '@ionic/angular';
 import { ApiService } from './services/service1.service';
+import { format, parseISO, getDate, getMonth, getYear } from 'date-fns';
 
 @Component({
   selector: 'app-tab1',
@@ -8,9 +10,11 @@ import { ApiService } from './services/service1.service';
 })
 export class Tab1Page {
 
+
+
   dataServices: any[] = [];
 
-  constructor(public api: ApiService) {
+  constructor(public api: ApiService, private popoverController : PopoverController) {
     this.getDataService();
 
   }
@@ -19,15 +23,22 @@ export class Tab1Page {
   }
 
   getDataService() {
-     this.api.getDataService()
+    this.api.getDataService()
       .subscribe(res => {
         console.log(res);
         this.dataServices = res;
-		console.log(this.dataServices);
+        console.log(this.dataServices);
       }, err => {
         console.log(err);
       });
   }
+
+ 
+  
+  async DismissClick() {
+      } 
+    
+
 
 
 

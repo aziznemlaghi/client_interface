@@ -7,10 +7,10 @@ width: 100%;
 }
 
 
+
 ion-card{
-  padding-top: 10%
-    ;
-    margin-top: 20%;
+  
+    margin-top: 5%;
     margin: 16px 0 24px;
 }
 .avatar{
@@ -19,4 +19,15 @@ ion-card{
 border: radius;
 }
 
-.price {     margin-left: 35%;}
+.price {     margin-left: 50%;}
+
+
+ion-popover{
+    
+        position:absolute;
+      
+}
+
+h1{
+    text-align: center;
+}

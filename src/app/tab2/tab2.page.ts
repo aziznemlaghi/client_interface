@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { environment } from 'src/environments/environment';
+import { AuthService } from '../auth/services/auth.service';
 import { ReservationService } from './services/reservation.service';
 
 @Component({
@@ -8,16 +11,27 @@ import { ReservationService } from './services/reservation.service';
 })
 export class Tab2Page {
   dataReservations: any[] = [];
+  reservation : any;
+  reservations : any;
 
-  constructor(public api: ReservationService) {
-    this.getReservations();
+  constructor(public api: ReservationService, private http: HttpClient ,private authservice : AuthService) {
+   
+  }
+
+  async ngOnInit() {
+    const key = await this.authservice.getToken() ;
+    const user = this.authservice.decodeToken(key as string);
+    console.log('******',user);
+    console.log(user.user.id);
+    
+    this.getByUser(user.user.id).subscribe(res=>{
+      this.reservations = res;
+      console.log(res);
+    });
 
   }
 
-  ngOnInit() {
-  }
-
-  getReservations() {
+ /* getReservations() {
      this.api.getReservations()
       .subscribe(res => {
         console.log(res);
@@ -26,7 +40,13 @@ export class Tab2Page {
       }, err => {
         console.log(err);
       });
-  }
+  }*/
 
-
+  getByUser(userId: number) {
+    
+     return this.http.get(
+         `${environment.baseApiUrl}/reservation/findReservationByUser/${userId}`
+        
+     );
+   }
 }

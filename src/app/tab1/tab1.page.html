@@ -17,30 +17,21 @@
     <img src="\assets\img\Blue.png"/>
     <ion-card-content>
       <ion-card-title>
-        {{data.name}}<span class="price">{{data.price}}dt</span>
+        {{data.name}}<span  class="price">{{data.price}}dt</span>
         </ion-card-title>
       <p>
         {{data.description}}
       </p>
       <br>
-      <ion-button expand="block" color="primary" >Reserve</ion-button>
+      <ion-button color="secondary" expand="full" id="size-button"  >
+        Reserve now
+      </ion-button>
+      
+
+            
+
     </ion-card-content>
   </ion-card>
-
-<!-- <ion-card *ngFor="let data of dataServices"  color="light">
-   <div class="img-wrapper">
-      <ion-img src="\assets\img\Blue.png"></ion-img>
-    </div>
-    <ion-card-content class="ion-text-center">
-      <h2>{{data.name}}<br> {{data.price}}</h2>
-      <ion-text color="medium">
-        <div style="display: flex;" class="ion-justify-content-center">
-        </div>
-      </ion-text>
-    </ion-card-content>
-  </ion-card>-->
-
-
 
 
 

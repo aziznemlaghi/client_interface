@@ -18,17 +18,16 @@
     <div align="center">
       <ion-avatar>
         <img src="assets\img\icon2.jpg" />
-       
+
         <ion-text class="profile-text">Welcome back {{user.user.name}} !</ion-text>
-       
+
       </ion-avatar>
     </div>
   </ion-grid>
-  <!--<ion-text>phone :{{user.user.phone}} </ion-text><br>
-  <ion-text >email :{{user.user.email}} </ion-text>-->
+
 
   <form #form="ngForm" (ngSubmit)="onSubmit()">
-  
+
     <ion-item>
       <ion-label>
         <ion-text>Name</ion-text>
@@ -68,17 +67,17 @@
       </p>
       </ion-label>
     </ion-item>
-    
+
     <ion-button [disabled]="!form.valid"
     type="submit"   class="updateButton" expand="full" color="secondary" block>Update profile</ion-button>
 
 </form>
-  
+
 <div >
   <ion-button (click)="onSignOut()" class="logout" expand="full" color="danger">Log out</ion-button>
     </div>
   </ion-content>
 
- 
+
 
 </ion-content>

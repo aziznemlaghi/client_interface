@@ -15,10 +15,10 @@ import { AuthService } from '../auth/services/auth.service';
 })
 export class Tab3Page {
 
-  user : any;
-  id : string;
-  
-  
+  user: any;
+  id: string;
+
+
 
   private httpOptions: { headers: HttpHeaders } = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json',
@@ -32,8 +32,8 @@ export class Tab3Page {
     ) {
 
       this.setUser();
-      
-      
+
+
     }
 
 
@@ -44,33 +44,44 @@ export class Tab3Page {
 
 
     async setUser(){
-    const key = await this.authService.getToken() ;  
+    const key = await this.authService.getToken() ;
     this.user = this.authService.decodeToken(key as string);
     console.log('******',this.user);
     }
 
-   
-    onSubmit (){
-    const { name,email, phone } = this.form.value;
-    const user: User= { name,phone, email };
-    return this.updateUser(this.user);
+
+    onSubmit(){
+    const user = {
+      name: this.form.value.name,
+      email:this.form.value.email,
+      phone:this.form.value.phone};
+
+   this.updateUser(this.user.id,user).subscribe(
+     (res)=>{
+       console.log('successfully updated',res);
+     },
+     (err)=>{
+       console.log('error update',err);
+       console.log(user);
+     }
+   );
     this.router.navigateByUrl('/tabs/tab1');
-
-
     }
-    
 
-    updateUser(UserId: number) {
+
+
+ updateUser( UserId: number,element: any) {
       return this.http
-        .put(
-          `${environment.baseApiUrl}/user/updateUser/62596aaec11d45ddfddf2cc8`,
+        .patch(
+          `${environment.baseApiUrl}/user/updateUser/${UserId}`,
           this.httpOptions
         )
         .pipe(take(1));
     }
 
-    
+
+
     /**decodeToken = (token: string): User | any =>
-    token ? jwt_decode(token) : null;*/
+    token ? jwt_decode(token) :  null;*/
 
 }

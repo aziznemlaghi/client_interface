@@ -1,6 +1,6 @@
 export interface NewUser {
-  name : string;
-  phone : number;
+  name: string;
+  phone: number;
   email: string;
   password: string;
 }

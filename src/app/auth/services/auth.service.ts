@@ -135,8 +135,8 @@ export class AuthService {
 
 
   decodeToken = (token: string): User | any =>token ? jwt_decode(token) : null;
- 
-  async getToken () {
+
+  async getToken() {
    const token = await Storage.get({key  : 'token'} ) ;
    return token.value;
 }
