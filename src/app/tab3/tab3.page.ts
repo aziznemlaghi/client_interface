@@ -56,7 +56,8 @@ export class Tab3Page {
       email:this.form.value.email,
       phone:this.form.value.phone};
 
-   this.updateUser(this.user.id,user).subscribe(
+
+   this.updateUser(this.user.user.id,user).subscribe(
      (res)=>{
        console.log('successfully updated',res);
      },
