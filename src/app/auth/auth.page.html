@@ -1,14 +1,14 @@
 <ion-content>
   <div class="title-container">
-    <ion-img src="assets\img\output-onlinepngtools.png"></ion-img>
+    <ion-img src="assets\img\logo.png"></ion-img>
   </div>
-  <div class="subtitle-container">we make it easier for you</div>
+  <div class="subtitle-container"><h3>we make it easier for you</h3></div>
 
   <form #form="ngForm" (ngSubmit)="onSubmit()">
     <ion-card>
       <ng-container *ngIf="submissionType === 'join'">
         <ion-item>
-          <ion-label position="floating">username</ion-label>
+          <ion-label position="floating">Username</ion-label>
           <ion-input
             #nameInput="ngModel"
             ngModel
@@ -22,25 +22,27 @@
         <ion-text
           color="danger"
           *ngIf="!nameInput.valid && nameInput.touched"
-          >Please enter your name.</ion-text
+          >Please a valid name.</ion-text
         >
+
       </ng-container>
       <ng-container *ngIf="submissionType === 'join'">
         <ion-item>
-          <ion-label position="floating">phone</ion-label>
+          <ion-label position="floating">Phone</ion-label>
           <ion-input
             #phoneInput="ngModel"
             ngModel
-            type="number"
-            minlength="8"
+            type="tel"
             name="phone"
+            class="formControl"
+            minlength="8"
             required
           ></ion-input>
         </ion-item>
         <ion-text
           color="danger"
           *ngIf="!phoneInput.valid && phoneInput.touched"
-          >Please enter your phone number.</ion-text
+          >Please enter a valid phone number.</ion-text
         >
       </ng-container>
       <ion-item>
@@ -55,7 +57,7 @@
         ></ion-input>
       </ion-item>
       <ion-text color="danger" *ngIf="!emailInput.valid && emailInput.touched"
-        >Please enter your email address.</ion-text
+        >Please enter a valid email address.</ion-text
       >
       <ion-item>
         <ion-label position="floating">Password</ion-label>
@@ -71,7 +73,7 @@
       <ion-text
         color="danger"
         *ngIf="!passwordInput.valid && passwordInput.touched"
-        >Please enter your password.</ion-text
+        >Please enter a valid password.</ion-text
       >
       <p *ngIf="submissionType === 'join'" class="terms-and-conditions">
         By clicking Agree & Join, you agree to the Deals

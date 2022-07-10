@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Reserve</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-title size="large">Pick the date</ion-title>
+  <ion-item>
+    <ion-datetime displayFormat="YYYY-MM-DDTHH:mm" [(ngModel)]="myDate" (ionChange)="dateChanged($event)">
+
+
+    </ion-datetime>
+  </ion-item>
+
+  <ion-button expand="full" color="secondary" (click)="confirm()">Reserve</ion-button>
+  <ion-button expand="full" color="danger" (click)="close()" >Cancel</ion-button>
+
+</ion-content>

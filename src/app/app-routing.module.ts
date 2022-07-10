@@ -16,6 +16,10 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then( m => m.AuthPageModule)
+  },
+  {
+    path: 'ion-modal',
+    loadChildren: () => import('./ion-modal/ion-modal.module').then( m => m.IonModalPageModule)
   }
 ];
 @NgModule({

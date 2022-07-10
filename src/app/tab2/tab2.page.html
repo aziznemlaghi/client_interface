@@ -12,10 +12,14 @@ Reservations    </ion-title>
       <ion-card-title >
 
         <ion-text>Date : {{data.date | date :'dd/MM/yyyy hh:mm'}}</ion-text><br>
-      
+
         <ion-text >Service : {{data.service.name}}</ion-text><br>
         <ion-text>Price : {{data.service.price}}dt</ion-text><br>
-        <ion-text>Status : {{data.status}}</ion-text>
+        <ion-text  >Status : <ion-text>
+          <span  class = "Accepted" *ngIf="data.status === 'Accepted'">{{data.status}}</span>
+          <span  class = "Refused" *ngIf="data.status === 'Refused'">{{data.status}}</span>
+          <span  class="pending" *ngIf="data.status === 'pending'">{{data.status}}</span>
+          <span  class = "Canceled" *ngIf="data.status === 'Canceled'">{{data.status}}</span></ion-text> </ion-text>
 
 
         </ion-card-title>
@@ -23,8 +27,7 @@ Reservations    </ion-title>
 
       </p>
       <br>
-      <ion-button expand="block" color="secondary" >Cancel Reservation</ion-button>
-      <ion-button expand="block" color="danger"  >Delete</ion-button>
+      <ion-button *ngIf="data.status === 'pending' " expand="block" color="secondary" (click)="CancelReservation(data)" >Cancel Reservation</ion-button>
     </ion-card-content>
   </ion-card>
 </ion-content>

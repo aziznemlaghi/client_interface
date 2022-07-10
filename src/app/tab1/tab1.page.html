@@ -14,7 +14,7 @@
   </ion-header>
 
   <ion-card  *ngFor="let data of dataServices">
-    <img src="\assets\img\Blue.png"/>
+    <img src="/assets/img/Black  and Cream Movie Night Invitations Poster.png"/>
     <ion-card-content>
       <ion-card-title>
         {{data.name}}<span  class="price">{{data.price}}dt</span>
@@ -23,12 +23,16 @@
         {{data.description}}
       </p>
       <br>
-      <ion-button color="secondary" expand="full" id="size-button"  >
-        Reserve now
-      </ion-button>
-      
 
-            
+
+        <ion-button  (click)="openModal(data._id)" color="secondary" expand="full">Reserve now</ion-button>
+
+
+
+
+
+
+
 
     </ion-card-content>
   </ion-card>

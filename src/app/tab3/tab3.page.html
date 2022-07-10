@@ -19,7 +19,7 @@
       <ion-avatar>
         <img src="assets\img\icon2.jpg" />
 
-        <ion-text class="profile-text">Welcome back {{user.user.name}} !</ion-text>
+        <ion-text class="profile-text">Welcome back {{profile.name}} !</ion-text>
 
       </ion-avatar>
     </div>
@@ -34,7 +34,7 @@
         <p><ion-input #nameInput="ngModel"
           ngModel
           type="text"
-          placeholder={{this.user.user.name}}
+          placeholder={{profile.name}}
           class="formControl"
           name="name"
           minlength="4"
@@ -47,7 +47,7 @@
         <p><ion-input  #phoneInput="ngModel"
           ngModel
           type="number"
-          placeholder={{this.user.user.phone}}
+          placeholder={{profile.phone}}
           minlength="8"
           name="phone"
           ></ion-input></p>
@@ -60,7 +60,7 @@
           <ion-input  #emailInput="ngModel"
           ngModel
           type="email"
-          placeholder={{this.user.user.email}}
+          placeholder={{profile.email}}
           name="email"
           [email]="true">
         </ion-input>

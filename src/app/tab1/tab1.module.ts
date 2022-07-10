@@ -18,6 +18,5 @@ import { HttpClientModule } from '@angular/common/http';
     Tab1PageRoutingModule
   ],
   declarations: [Tab1Page],
-  
 })
 export class Tab1PageModule {}

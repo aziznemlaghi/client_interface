@@ -38,17 +38,15 @@ export class AuthService {
 
   get userRole(): Observable<Role> {
     return this.user$.asObservable().pipe(
-      switchMap((user: User) => {
-        return of(user?.role); // for after signed out, but still subscribed
-      })
+      switchMap((user: User) =>
+         of(user?.role) // for after signed out, but still subscribed
+      )
     );
   }
 
   get userId(): Observable<string> {
     return this.user$.asObservable().pipe(
-      switchMap((user: User) => {
-        return of(user.id);
-      })
+      switchMap((user: User) => of(user.id))
     );
   }
 
@@ -111,14 +109,14 @@ export class AuthService {
       })
     ).pipe(
       map((data: { value: string }) => {
-        if (!data || !data.value) return null;
+        if (!data || !data.value) {return null;}
 
         const decodedToken: UserResponse = jwt_decode(data.value);
         const jwtExpirationInMsSinceUnixEpoch = decodedToken.exp * 1000;
         const isExpired =
           new Date() > new Date(jwtExpirationInMsSinceUnixEpoch);
 
-        if (isExpired) return null;
+        if (isExpired) {return null;}
         if (decodedToken.user) {
           this.user$.next(decodedToken.user);
           return true;

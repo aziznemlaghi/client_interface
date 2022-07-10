@@ -7,9 +7,22 @@ width: 100%;
 }
 
 
+ion-datetime {
+  height: auto;
+  width: auto;
+
+  max-width: 350px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+  grid-gap: 0 10px;
+}
+
 
 ion-card{
-  
+
     margin-top: 5%;
     margin: 16px 0 24px;
 }
@@ -23,11 +36,42 @@ border: radius;
 
 
 ion-popover{
-    
+
         position:absolute;
-      
+
 }
 
 h1{
     text-align: center;
+}
+
+ion-modal {
+  &::part(content) {
+    backdrop-filter: blur(6px);
+
+  }
+
+  ion-content {
+    --background: transparent;
+    --padding-top: 25vh;
+    --padding-start: 20px;
+    --padding-end: 20px;
+
+  }
+}
+  ion-modal {
+    --width: 290px;
+    --height:500px;
+    --border-radius: 8px;
+  }
+
+  ion-modal ion-datetime {
+    height: 500px;
+  }
+
+ion-datetime {
+  height: auto;
+  width: auto;
+
+  max-width: 350px;
 }

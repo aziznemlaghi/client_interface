@@ -38,4 +38,9 @@ export class ApiService {
       catchError(this.handleError));
   }
 
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  createReservation(reservation) {
+    return this.http.post<any>('http://localhost:3000/reservation/add', reservation);
+  }
+
 }

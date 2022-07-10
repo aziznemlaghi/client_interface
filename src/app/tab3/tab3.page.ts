@@ -7,6 +7,7 @@ import { catchError, take } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { User } from '../auth/models/user.model';
 import { AuthService } from '../auth/services/auth.service';
+import {ToastController} from "@ionic/angular";
 
 @Component({
   selector: 'app-tab3',
@@ -17,21 +18,23 @@ export class Tab3Page {
 
   user: any;
   id: string;
-
+profile : any;
 
 
   private httpOptions: { headers: HttpHeaders } = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json',
+      // eslint-disable-next-line @typescript-eslint/naming-convention
     Authorization: 'token'
   }),
   };
 
   @ViewChild('form') form: NgForm;
 
-  constructor(private authService: AuthService,private http: HttpClient, private router: Router
+  constructor(private authService: AuthService,private http: HttpClient, private router: Router,private toast: ToastController
     ) {
 
       this.setUser();
+
 
 
     }
@@ -46,6 +49,7 @@ export class Tab3Page {
     async setUser(){
     const key = await this.authService.getToken() ;
     this.user = this.authService.decodeToken(key as string);
+    this.getUserbyId();
     console.log('******',this.user);
     }
 
@@ -58,27 +62,55 @@ export class Tab3Page {
 
 
    this.updateUser(this.user.user.id,user).subscribe(
-     (res)=>{
-       console.log('successfully updated',res);
+     async (res) => {
+       const toast = await this.toast.create({
+         color: 'success',
+         icon: 'checkmark-circle-outline',
+         message: 'Profile updated successfully',
+         position: 'bottom',
+         duration: 2000
+
+       });
+       toast.present();
+       console.log('successfully updated', res);
+       this.getUserbyId();
      },
      (err)=>{
        console.log('error update',err);
        console.log(user);
      }
    );
-    this.router.navigateByUrl('/tabs/tab1');
     }
 
 
 
- updateUser( UserId: number,element: any) {
+// @ts-ignore
+getUserbyId(){
+  this.getUser(this.user.user.id).subscribe(
+(res)=>{
+  console.log('****pppp',res);
+  this.profile = res;
+}
+);
+}
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+ updateUser( UserId: string,element: any) {
       return this.http
         .patch(
-          `${environment.baseApiUrl}/user/updateUser/${UserId}`,
+          `${environment.baseApiUrl}/user/updateUser/${UserId}`,element,
           this.httpOptions
         )
         .pipe(take(1));
     }
+
+
+  getUser( UserId: string) {
+    return this.http
+      .get(
+        `${environment.baseApiUrl}/user/${UserId}`
+      )
+      .pipe(take(1));
+  }
 
 
 
